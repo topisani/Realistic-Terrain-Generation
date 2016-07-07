@@ -1,4 +1,4 @@
-package teamrtg.rtg.core;
+package teamrtg.rtg.core.base;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;

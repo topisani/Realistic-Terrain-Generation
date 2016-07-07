@@ -23,7 +23,7 @@ public class RealisticBiomePresenceTester {
 
                 RTGBiome rBiome = RTGBiome.forBiome(biomeId);
                 if (rBiome == null) {
-                    Logger.info("RTG could not find a realistic version of %s (%d). This is expected for non-overworld biomes", biomeName, biomeId, biomeClass);
+                    Logger.info("RTGMod could not find a realistic version of %s (%d). This is expected for non-overworld biomes", biomeName, biomeId, biomeClass);
                 }
             }
         }

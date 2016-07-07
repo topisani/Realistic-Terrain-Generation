@@ -36,8 +36,8 @@ public class BiomeConfig extends Config {
         this.biomeSlug = biomeSlug;
 
         ALLOW_VILLAGES = this.addBool("Allow Villages", "");
-        USE_RTG_SURFACES = this.addBool("Use RTG surfaces", "");
-        USE_RTG_DECORATIONS = this.addBool("Use RTG decorations", "");
+        USE_RTG_SURFACES = this.addBool("Use RTGMod surfaces", "");
+        USE_RTG_DECORATIONS = this.addBool("Use RTGMod decorations", "");
         TOP_BLOCK = this.addBlock("Top block", "");
         FILL_BLOCK = this.addBlock("Fill block", "");
         FILL_LAYERS = this.addInt("Fill layers", "");
@@ -58,7 +58,7 @@ public class BiomeConfig extends Config {
     private void setDefaults() {
         ALLOW_VILLAGES.setDefault(true).setComment("");
         USE_RTG_SURFACES.setDefault(true).setComment("Set to false to do something that i, topisani, dont understand.").setDefault(true);
-        USE_RTG_DECORATIONS.setComment("If false RTG will not try to decorate this biome, but instead let it handle that itself.").setDefault(true);
+        USE_RTG_DECORATIONS.setComment("If false RTGMod will not try to decorate this biome, but instead let it handle that itself.").setDefault(true);
         TOP_BLOCK.setComment("The top surface block used in this biome (Grass in plains).");
         FILL_BLOCK.setComment("The block that fills between the surface block and the stone underneath (Dirt in plains).");
         FILL_LAYERS.setDefault(4);

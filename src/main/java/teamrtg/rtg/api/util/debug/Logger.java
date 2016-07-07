@@ -9,23 +9,23 @@ import teamrtg.rtg.api.module.Mods;
 public class Logger {
 
     public static void debug(String format, Object... data) {
-        if (Mods.RTG.config.DEBUG_LOGGING.get()) FMLLog.log(Level.INFO, "[RTG-DEBUG] " + format, data);
+        if (Mods.RTG.config.DEBUG_LOGGING.get()) FMLLog.log(Level.INFO, "[RTGMod-DEBUG] " + format, data);
     }
 
     public static void info(String format, Object... data) {
-        FMLLog.log(Level.INFO, "[RTG-INFO] " + format, data);
+        FMLLog.log(Level.INFO, "[RTGMod-INFO] " + format, data);
     }
 
     public static void warn(String format, Object... data) {
-        FMLLog.log(Level.WARN, "[RTG-WARN] " + format, data);
+        FMLLog.log(Level.WARN, "[RTGMod-WARN] " + format, data);
     }
 
     public static void error(String format, Object... data) {
-        FMLLog.log(Level.ERROR, "[RTG-ERROR] " + format, data);
+        FMLLog.log(Level.ERROR, "[RTGMod-ERROR] " + format, data);
     }
 
     public static void fatal(Throwable throwable, String message, Object... data) {
-        FMLLog.log(Level.FATAL, "[RTG-FATAL] " + message, data);
+        FMLLog.log(Level.FATAL, "[RTGMod-FATAL] " + message, data);
         Minecraft.getMinecraft().crashed(new CrashReport(message, throwable));
     }
 }

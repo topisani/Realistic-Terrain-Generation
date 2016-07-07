@@ -1,4 +1,4 @@
-package teamrtg.rtg.core.world.gen.genlayer;
+package teamrtg.rtg.core.base.world.gen.genlayer;
 
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.GenLayerRiverMix;

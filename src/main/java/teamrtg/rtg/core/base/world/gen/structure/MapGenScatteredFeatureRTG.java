@@ -1,4 +1,4 @@
-package teamrtg.rtg.core.world.gen.structure;
+package teamrtg.rtg.core.base.world.gen.structure;
 
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.init.Biomes;
@@ -14,7 +14,7 @@ import teamrtg.rtg.api.config.BiomeConfig;
 import teamrtg.rtg.api.module.Mods;
 import teamrtg.rtg.api.util.debug.Logger;
 import teamrtg.rtg.api.world.biome.RTGBiome;
-import teamrtg.rtg.core.world.WorldTypeRTG;
+import teamrtg.rtg.core.base.world.WorldTypeRTG;
 
 import java.util.*;
 import java.util.Map.Entry;

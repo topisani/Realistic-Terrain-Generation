@@ -28,7 +28,7 @@ public class ModConfig extends Config {
             biomeConfig.load();
 
         } catch (Exception e) {
-            Logger.error("RTG has had a problem loading " + modID + " configuration.");
+            Logger.error("RTGMod has had a problem loading " + modID + " configuration.");
         } finally {
             if (forgeConfig.hasChanged()) {
                 forgeConfig.save();

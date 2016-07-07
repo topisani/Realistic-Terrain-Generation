@@ -1,4 +1,4 @@
-package teamrtg.rtg.core.world.gen;
+package teamrtg.rtg.core.base.world.gen;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Biomes;

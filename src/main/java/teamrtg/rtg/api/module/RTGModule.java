@@ -4,7 +4,7 @@ import teamrtg.rtg.api.config.ModConfig;
 import teamrtg.rtg.api.world.biome.RTGBiome;
 
 /**
- * Holds all properties that RTG would need to access for a supported mod.
+ * Holds all properties that RTGMod would need to access for a supported mod.
  * @author topisani
  */
 public class RTGModule {

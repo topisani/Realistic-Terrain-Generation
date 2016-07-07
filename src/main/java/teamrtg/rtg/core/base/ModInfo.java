@@ -1,4 +1,4 @@
-package teamrtg.rtg.core;
+package teamrtg.rtg.core.base;
 
 import net.minecraftforge.common.ForgeVersion;
 
@@ -11,6 +11,6 @@ public class ModInfo {
         + ForgeVersion.revisionVersion + '.'
         + ForgeVersion.buildVersion;
     public static final String MOD_DEPS = "";
-    public static final String PROXY_COMMON = "teamrtg.rtg.core.CommonProxy";
-    public static final String PROXY_CLIENT = "teamrtg.rtg.core.ClientProxy";
+    public static final String PROXY_COMMON = "teamrtg.rtg.core.base.CommonProxy";
+    public static final String PROXY_CLIENT = "teamrtg.rtg.core.base.ClientProxy";
 }

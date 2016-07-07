@@ -32,7 +32,7 @@ public class Mods {
     }
 
     /**
-     * Add your RTGSupport Object here, and RTG will take care of adding biomes and such
+     * Add your RTGSupport Object here, and RTGMod will take care of adding biomes and such
      */
     public static void registerMod(RTGModule mod) {
         mods.add(mod);

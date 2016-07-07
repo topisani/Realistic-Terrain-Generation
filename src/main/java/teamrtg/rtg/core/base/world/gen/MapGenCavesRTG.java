@@ -1,4 +1,4 @@
-package teamrtg.rtg.core.world.gen;
+package teamrtg.rtg.core.base.world.gen;
 
 import com.google.common.base.Objects;
 import net.minecraft.block.Block;

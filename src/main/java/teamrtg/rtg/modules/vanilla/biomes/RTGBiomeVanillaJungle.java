@@ -51,7 +51,7 @@ public class RTGBiomeVanillaJungle extends RTGBiomeVanilla {
 
     @Override
     public void initDecos() {
-        // Blend of the WorldGenMegaJungle collection and some tall RTG Mangrove trees.
+        // Blend of the WorldGenMegaJungle collection and some tall RTGMod Mangrove trees.
         DecoTree megaJungleMangrove = new DecoTree();
         megaJungleMangrove.loops = 3;
         megaJungleMangrove.treeType = TreeType.MEGA_JUNGLE_MANGROVE;

@@ -1,4 +1,4 @@
-package teamrtg.rtg.core.event;
+package teamrtg.rtg.core.base.event;
 
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.MinecraftForge;
@@ -11,15 +11,15 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import teamrtg.rtg.api.world.biome.RTGBiome;
 import teamrtg.rtg.api.module.Mods;
 import teamrtg.rtg.api.util.debug.Logger;
-import teamrtg.rtg.core.RTG;
-import teamrtg.rtg.core.world.WorldTypeRTG;
-import teamrtg.rtg.core.world.BiomeProviderRTG;
-import teamrtg.rtg.core.world.gen.MapGenCavesRTG;
-import teamrtg.rtg.core.world.gen.MapGenRavineRTG;
-import teamrtg.rtg.core.world.gen.genlayer.RiverRemover;
-import teamrtg.rtg.core.world.gen.structure.MapGenScatteredFeatureRTG;
-import teamrtg.rtg.core.world.gen.structure.MapGenVillageRTG;
-import teamrtg.rtg.core.world.gen.structure.StructureOceanMonumentRTG;
+import teamrtg.rtg.core.base.RTGMod;
+import teamrtg.rtg.core.base.world.WorldTypeRTG;
+import teamrtg.rtg.core.base.world.BiomeProviderRTG;
+import teamrtg.rtg.core.base.world.gen.MapGenCavesRTG;
+import teamrtg.rtg.core.base.world.gen.MapGenRavineRTG;
+import teamrtg.rtg.core.base.world.gen.genlayer.RiverRemover;
+import teamrtg.rtg.core.base.world.gen.structure.MapGenScatteredFeatureRTG;
+import teamrtg.rtg.core.base.world.gen.structure.MapGenVillageRTG;
+import teamrtg.rtg.core.base.world.gen.structure.StructureOceanMonumentRTG;
 
 public class EventManagerRTG {
 
@@ -66,8 +66,8 @@ public class EventManagerRTG {
     @SubscribeEvent
     public void onBiomeGenInit(WorldTypeEvent.InitBiomeGens event) {
 
-        // only handle RTG world type
-        if (!event.getWorldType().getWorldTypeName().equalsIgnoreCase("RTG")) return;
+        // only handle RTGMod world type
+        if (!event.getWorldType().getWorldTypeName().equalsIgnoreCase("RTGMod")) return;
 
         boolean stripRivers = true; // This used to be a config option. Hardcoding until we have a need for the option.
 
@@ -90,9 +90,9 @@ public class EventManagerRTG {
                 Mods.syncAllConfigs();
             }
         } else {
-            MinecraftForge.TERRAIN_GEN_BUS.unregister(RTG.eventMgr);
-            MinecraftForge.ORE_GEN_BUS.unregister(RTG.eventMgr);
-            MinecraftForge.EVENT_BUS.unregister(RTG.eventMgr);
+            MinecraftForge.TERRAIN_GEN_BUS.unregister(RTGMod.eventMgr);
+            MinecraftForge.ORE_GEN_BUS.unregister(RTGMod.eventMgr);
+            MinecraftForge.EVENT_BUS.unregister(RTGMod.eventMgr);
         }
 
     }
@@ -100,7 +100,7 @@ public class EventManagerRTG {
     @SubscribeEvent
     public void preBiomeDecorate(DecorateBiomeEvent.Pre event) {
 
-        //Are we in an RTG world? Do we have RTG's chunk manager?
+        //Are we in an RTGMod world? Do we have RTGMod's chunk manager?
         if (event.getWorld().getWorldInfo().getTerrainType() instanceof WorldTypeRTG && event.getWorld().getBiomeProvider() instanceof BiomeProviderRTG) {
 
             BiomeProviderRTG cmr = (BiomeProviderRTG) event.getWorld().getBiomeProvider();

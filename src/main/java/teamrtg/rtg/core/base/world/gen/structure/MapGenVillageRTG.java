@@ -1,4 +1,4 @@
-package teamrtg.rtg.core.world.gen.structure;
+package teamrtg.rtg.core.base.world.gen.structure;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.MathHelper;
@@ -10,8 +10,8 @@ import net.minecraft.world.gen.structure.StructureVillagePieces;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Road;
 import teamrtg.rtg.api.world.biome.RTGBiome;
 import teamrtg.rtg.api.module.Mods;
-import teamrtg.rtg.core.world.WorldTypeRTG;
-import teamrtg.rtg.core.world.BiomeProviderRTG;
+import teamrtg.rtg.core.base.world.WorldTypeRTG;
+import teamrtg.rtg.core.base.world.BiomeProviderRTG;
 
 import java.util.List;
 import java.util.Map;

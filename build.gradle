@@ -10,6 +10,8 @@ buildscript {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
     }
 }
+apply plugin: 'java'
+apply plugin: 'idea'
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 sourceCompatibility = 1.8
@@ -22,26 +24,120 @@ def parseprops(File cfg) {
         return (new ConfigSlurper().parse(prop))
     }
 }
+
 ext.ref = parseprops(file('build.properties'))
-ext.ref.mod_deps = parseprops(file('mod_deps.properties'))
+ext.ref.mod_deps = parseprops(file("versions/" + ref.mc_version + '.properties'))
 
 group = ref.package_base + '.' + ref.mod_id
 archivesBaseName = ref.mod_id
-version = (System.getenv("TRAVIS") ? "1.9-DEV-" + System.getenv('TRAVIS_BUILD_NUMBER') : ref.mc_version + '-' + ref.mod_version)
-def versionName = (System.getenv("TRAVIS") ? "1.9-" + ref.mod_version + "-DEV-" +  System.getenv('TRAVIS_BUILD_NUMBER') : version)
+version = ref.mc_version + '-' + ref.mod_version
 
 minecraft {
-    version = ref.mcf_version
+    version = ref.mod_deps.mcf_version
     runDir = ref.run_dir
-    mappings = ref.mappings
+    mappings = ref.mod_deps.mappings
     replace '@MOD_NAME@', ref.mod_name
     replace '@MOD_ID@', ref.mod_id
-    replace '@MOD_VERSION@', versionName
-    replace '@MCF_VERSION@', ref.mcf_version
-    if (ref.mod_deps!="") replace '@MOD_DEPS@', ";" + ref.mod_deps.depstring
+    replace '@MOD_VERSION@', version
+    replace '@MCF_VERSION@', ref.mod_deps.mcf_version
+    if (ref.mod_deps != "") replace '@MOD_DEPS@', ";" + ref.mod_deps.depstring
     else replace '@MOD_DEPS@', ''
     replaceIn 'ModInfo.java'
 }
+
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand([
+                'modid'      : ref.mod_id,
+                'name'       : ref.mod_name,
+                'description': ref.mod_desc,
+                'version'    : ref.mod_version,
+                'mcversion'  : ref.mc_version,
+                'url'        : ref.mod_url,
+                'authorList' : ref.mod_author,
+                'credits'    : ref.mod_creds,
+                'logoFile'   : ref.mod_logo,
+        ])
+    }
+    from(sourceSets.main.resources.srcDirs) { exclude 'mcmod.info' }
+}
+
+//##### One repo to rule them all
+
+//Array of numbers as words
+// up to 20 will probably have us covered for quite some time.
+class Constants {
+    def static String[] numbers = [
+            "zero",
+            "one",
+            "two",
+            "three",
+            "four",
+            "five",
+            "six",
+            "seven",
+            "eight",
+            "nine",
+            "ten",
+            "eleven",
+            "twelve",
+            "thirteen",
+            "fourteen",
+            "fifteen",
+            "sixteen",
+            "seventeen",
+            "eighteen",
+            "nineteen",
+            "twenty"
+    ]
+}
+
+private static String verAsString(String ver) {
+    try {
+        def String[] nums = ver.split(/\./)
+        def String[] strs = [];
+        for (String num : nums) {
+            def int i = num.toInteger()
+            strs = strs + Constants.numbers[i].toString()
+        }
+        return strs.join("/")
+    } catch (Exception ignored) {
+        println "didn't understand minecraft version"
+        return "ERROR"
+    }
+}
+
+def boolean shouldBeExcluded(String path) {
+    (path.contains("teamrtg/rtg/core/mcver/") &&
+            !path.contains("teamrtg/rtg/core/mcver/" + verAsString(ref.mc_version)))
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ["src/main/java"]
+            fileTree("src/main/java").forEach { File file ->
+                if (shouldBeExcluded(file.path) && !file.isDirectory())
+                    exclude "**/" + file.path.split("src/main/java/").last()
+            }
+        }
+    }
+}
+
+idea {
+    module {
+        fileTree("src/main/java").forEach { File file ->
+            if (shouldBeExcluded(file.path) && !file.isDirectory() ||
+                file.path.matches("src/main/java/teamrtg/rtg/core/mcver/[a-z_-]+/[a-z_-]+/[a-z_-]+/.*")) {
+                println file.path
+                excludeDirs += file("src/main/java/" + file.path.split("src/main/java/").last())
+            }
+        }
+    }
+}
+
+//Dependencies
 
 repositories {
     maven {
@@ -50,25 +146,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.glitchfiend.biomesoplenty:BiomesOPlenty:' + ref.mc_version + '-' + ref.mod_deps.bopver + ':deobf'
-}
-
-processResources {
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-		expand ([
-			'modid':ref.mod_id,
-			'name':ref.mod_name,
-			'description':ref.mod_desc,
-			'version':ref.mod_version,
-			'mcversion':ref.mc_version,
-			'url':ref.mod_url,
-			'authorList':ref.mod_author,
-			'credits':ref.mod_creds,
-			'logoFile':ref.mod_logo,
-		])
-	}
-	from(sourceSets.main.resources.srcDirs) {exclude 'mcmod.info'}
+    deobfProvided 'com.github.glitchfiend.biomesoplenty:BiomesOPlenty:' + ref.mc_version + '-' + ref.mod_deps.bopver + ':deobf'
 }
 
 // Run runClient and runServer with the -DDEBUG option to start them with a debug session

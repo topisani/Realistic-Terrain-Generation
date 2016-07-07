@@ -1,4 +1,4 @@
-package teamrtg.rtg.core;
+package teamrtg.rtg.core.base;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -11,18 +11,20 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import teamrtg.rtg.api.module.Mods;
 import teamrtg.rtg.api.util.RealisticBiomePresenceTester;
-import teamrtg.rtg.client.DebugHandler;
-import teamrtg.rtg.core.event.EventManagerRTG;
-import teamrtg.rtg.core.world.WorldTypeRTG;
+import teamrtg.rtg.core.base.client.DebugHandler;
+import teamrtg.rtg.core.base.event.EventManagerRTG;
+import teamrtg.rtg.core.base.world.WorldTypeRTG;
 import teamrtg.rtg.api.world.RealisticBiomeFaker;
+import teamrtg.rtg.core.mcver.one.ten.zero.*;
+import teamrtg.rtg.core.mcver.one.ten.zero.RTGVersion;
 
 import java.util.ArrayList;
 
 @Mod(modid = ModInfo.MOD_ID, name = ModInfo.MOD_NAME, version = ModInfo.MOD_VERSION, dependencies = "required-after:Forge@[" + ModInfo.FORGE_DEP + ",)" + ModInfo.MOD_DEPS, acceptableRemoteVersions = "*")
-public class RTG {
+public class RTGMod {
 
     @Instance(ModInfo.MOD_ID)
-    public static RTG instance;
+    public static RTGMod instance;
     public static String configPath;
     public static WorldTypeRTG worldtype;
     public static EventManagerRTG eventMgr;
@@ -36,15 +38,20 @@ public class RTG {
     public void preInit(FMLPreInitializationEvent event) {
         instance = this;
 
-        configPath = event.getModConfigurationDirectory() + "/RTG/";
+        configPath = event.getModConfigurationDirectory() + "/RTGMod/";
         Mods.syncAllConfigs();
 
+        teamrtg.rtg.core.mcver.one.ten.zero.RTGVersion ver10;
+        ver10 = new teamrtg.rtg.core.mcver.one.ten.zero.RTGVersion();
+        teamrtg.rtg.core.mcver.one.nine.four.RTGVersion ver9;
+        ver9 = new teamrtg.rtg.core.mcver.one.nine.four.RTGVersion();
+        ver9.test(ver10);
         eventMgr = new EventManagerRTG();
         MinecraftForge.EVENT_BUS.register(eventMgr);
         MinecraftForge.ORE_GEN_BUS.register(eventMgr);
         MinecraftForge.TERRAIN_GEN_BUS.register(eventMgr);
 
-        worldtype = new WorldTypeRTG("RTG");
+        worldtype = new WorldTypeRTG("RTGMod");
     }
 
     @EventHandler

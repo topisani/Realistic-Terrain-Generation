@@ -11,8 +11,8 @@ import teamrtg.rtg.api.config.ConfigProperty.PropertyInt;
 public class ConfigRTG extends ModConfig {
     public final PropertyInt FLAT_BEDROCK_LAYERS = addInt("Number of flat bedrock layers", "bedrock");
     public final PropertyBlock BEDROCK_BLOCK = addBlock("BEDROCK_BLOCK", "bedrock");
-    public final PropertyBool ENABLE_RTG_BIOME_DECORATIONS = addBool("Enable RTG Biome Decorations", "biomes");
-    public final PropertyBool ENABLE_RTG_SURFACES = addBool("Enable RTG Biome Surfaces", "biomes");
+    public final PropertyBool ENABLE_RTG_BIOME_DECORATIONS = addBool("Enable RTGMod Biome Decorations", "biomes");
+    public final PropertyBool ENABLE_RTG_SURFACES = addBool("Enable RTGMod Biome Surfaces", "biomes");
     public final PropertyBool USE_BOP_LAYOUT = addBool("Use BOP biome layout if avaliable", "biomes");
     public final PropertyBool ENABLE_COUBLESTONE_BOULDERS = addBool("Enable Cobblestone Boulders", "boulders");
     public final PropertyInt COBBLESTONE_BOULDER_CHANCE = addInt("1/x chance that Cobblestone Boulders will generate if given the opportunity to do so during world gen", "boulders");
@@ -62,20 +62,20 @@ public class ConfigRTG extends ModConfig {
     public final PropertyInt SURFACE_BLEED_RADIUS = addInt("Surface bleeding radius", "surface bleeding");
 
     public ConfigRTG() {
-        super("RTG");
+        super("RTGMod");
     }
 
     @Override
     public void initDefaults() {
         FLAT_BEDROCK_LAYERS.setDefault(0).setComment("0 = Normal bedrock (rough pattern); 1-5 = Number of flat bedrock layers to generate");
         BEDROCK_BLOCK.setDefault(Blocks.BEDROCK.getDefaultState()).setComment("The block to use for the bottom of the Overworld");
-        ENABLE_RTG_BIOME_DECORATIONS.setDefault(true).setComment("If TRUE, uses the individual biome settings in the biome forgeConfig files. If FALSE, disables all RTG decorations and uses biomes decorations instead.");
-        ENABLE_RTG_SURFACES.setDefault(true).setComment("If TRUE, uses the individual biome settings in the biome forgeConfig files. If FALSE, disables all RTG surfaces and uses biomes surfaces instead.");
-        USE_BOP_LAYOUT.setDefault(false).setComment("If FALSE, RTG will use biomes biome layout, even if BOP is installed. This means no BOP biomes.");
+        ENABLE_RTG_BIOME_DECORATIONS.setDefault(true).setComment("If TRUE, uses the individual biome settings in the biome forgeConfig files. If FALSE, disables all RTGMod decorations and uses biomes decorations instead.");
+        ENABLE_RTG_SURFACES.setDefault(true).setComment("If TRUE, uses the individual biome settings in the biome forgeConfig files. If FALSE, disables all RTGMod surfaces and uses biomes surfaces instead.");
+        USE_BOP_LAYOUT.setDefault(false).setComment("If FALSE, RTGMod will use biomes biome layout, even if BOP is installed. This means no BOP biomes.");
         ENABLE_COUBLESTONE_BOULDERS.setDefault(true);
         COBBLESTONE_BOULDER_CHANCE.setDefault(1).setComment("1 = Always generate if possible; 2 = 50% chance; 4 = 25% chance");
         ENABLE_CAVE_MODIFICATIONS.setDefault(true).setComment("Must be set to TRUE for the other cave settings to have any effect." +
-                "If FALSE, RTG won't interfere with cave generation at all.");
+                "If FALSE, RTGMod won't interfere with cave generation at all.");
         ENABLE_CAVES.setDefault(true);
         CAVE_DENSITY.setDefault(8).setRange(1, 40).setComment("This setting controls the size of caves." + NEW_LINE +
                 "HIGHER values = BIGGER caves & MORE lag. (14 = biomes cave density)");
@@ -94,7 +94,7 @@ public class ConfigRTG extends ModConfig {
         ENABLE_UNDERGROUND_LAVA_LAKES.setDefault(true);
         UNDERGROUND_LAVA_LAKE_CHANCE.setDefault(10);
         GENERATE_MINESHAFTS.setDefault(true);
-        GENERATE_ORES.setDefault(true).setComment("If FALSE, RTG will not generate ores. This may be required for some mod compatibility, as you would otherwise get double the ores");
+        GENERATE_ORES.setDefault(true).setComment("If FALSE, RTGMod will not generate ores. This may be required for some mod compatibility, as you would otherwise get double the ores");
         ENABLE_RAVINE_MODIFICATIONS.setDefault(true);
         ENABLE_RAVINES.setDefault(false);
         RAVINE_FREQUENCY.setDefault(2);

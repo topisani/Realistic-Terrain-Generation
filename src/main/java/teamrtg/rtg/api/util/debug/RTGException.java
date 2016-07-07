@@ -41,21 +41,21 @@ public class RTGException extends Exception {
     }
 
     public void warn() {
-        String s = "RTG experienced a %s error.";
+        String s = "RTGMod experienced a %s error.";
         if (!this.message.isEmpty()) s += " Reason: " + identifier;
         if (!this.identifier.isEmpty()) s += "Crash identifier: " + identifier;
         Logger.warn(s, type.name().replaceAll("_", " ").toLowerCase());
     }
 
     public void error() {
-        String s = "RTG experienced a %s error.";
+        String s = "RTGMod experienced a %s error.";
         if (!this.message.isEmpty()) s += " Reason: " + identifier;
         if (!this.identifier.isEmpty()) s += "Crash identifier: " + identifier;
         Logger.error(s, type.name().replaceAll("_", " ").toLowerCase());
     }
 
     public void crash() {
-        String s = "RTG experienced a %s error.";
+        String s = "RTGMod experienced a %s error.";
         if (!this.message.isEmpty()) s += " Reason: %s";
         if (!this.identifier.isEmpty()) s += "Crash identifier: " + identifier;
         Logger.fatal(this, s, type.name().replaceAll("_", " ").toLowerCase());

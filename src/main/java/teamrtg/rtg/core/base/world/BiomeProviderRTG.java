@@ -1,4 +1,4 @@
-package teamrtg.rtg.core.world;
+package teamrtg.rtg.core.base.world;
 
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.crash.CrashReport;

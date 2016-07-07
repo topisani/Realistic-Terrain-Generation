@@ -1,4 +1,4 @@
-package teamrtg.rtg.core.world;
+package teamrtg.rtg.core.base.world;
 
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
@@ -9,7 +9,7 @@ import net.minecraft.world.gen.ChunkProviderOverworld;
 public class WorldTypeRTG extends WorldType {
 
     public WorldTypeRTG(String name) {
-        super("RTG");
+        super("RTGMod");
     }
 
     @Override

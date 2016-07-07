@@ -1,4 +1,4 @@
-package teamrtg.rtg.client;
+package teamrtg.rtg.core.base.client;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -11,8 +11,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import teamrtg.rtg.api.world.biome.RTGBiome;
 import teamrtg.rtg.api.module.Mods;
 import teamrtg.rtg.api.util.BiomeUtils;
-import teamrtg.rtg.core.ModInfo;
-import teamrtg.rtg.core.world.BiomeProviderRTG;
+import teamrtg.rtg.core.base.ModInfo;
+import teamrtg.rtg.core.base.world.BiomeProviderRTG;
 
 public final class DebugHandler {
 

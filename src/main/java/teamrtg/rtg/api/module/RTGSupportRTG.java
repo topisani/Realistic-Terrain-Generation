@@ -11,7 +11,7 @@ public class RTGSupportRTG extends RTGModule {
     public ConfigRTG config;
 
     public RTGSupportRTG() {
-        super("RTG", true, false);
+        super("RTGMod", true, false);
         config = new ConfigRTG();
         config.initDefaults();
         super.config = config;

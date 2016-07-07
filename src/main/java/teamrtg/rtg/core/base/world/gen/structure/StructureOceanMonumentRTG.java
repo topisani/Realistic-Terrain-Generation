@@ -1,4 +1,4 @@
-package teamrtg.rtg.core.world.gen.structure;
+package teamrtg.rtg.core.base.world.gen.structure;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -23,7 +23,7 @@ import net.minecraft.world.gen.structure.StructureOceanMonumentPieces;
 import net.minecraft.world.gen.structure.StructureStart;
 import teamrtg.rtg.api.util.BiomeUtils;
 import teamrtg.rtg.api.util.debug.Logger;
-import teamrtg.rtg.core.world.WorldTypeRTG;
+import teamrtg.rtg.core.base.world.WorldTypeRTG;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
